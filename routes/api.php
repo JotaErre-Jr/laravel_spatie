@@ -19,7 +19,7 @@ use App\Http\Controllers\UserController;
 
 Route::post('/login', [UserController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function(){
-    Route::get('/user', [UserController::class, 'index']);
+    Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::get('/index', [IndexController::class, 'index'])->name('index');
     Route::get('/dashboard', [DashController::class, 'dash'])->name('dashboard');
 

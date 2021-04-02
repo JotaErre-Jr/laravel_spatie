@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -24,6 +28,11 @@ class UserSeeder extends Seeder
             'email' => 'user@system.com',
             'password' => bcrypt('123456789'),
         ]);
+
+        $user = User::find(1);
+        $user->assignRole('Admin');
+        $user = User::find(2);
+        $user->assignRole('User');
     }
 }
 
