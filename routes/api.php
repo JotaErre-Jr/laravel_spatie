@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\DashController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,8 @@ use App\Http\Controllers\UserController;
 
 Route::post('/login', [UserController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function(){
-    Route::get('/user', [UserController::class, 'index'])->name('user');
+    //Route::resource('users', AdminController::class)->only('index', 'dashboard')->names('administrador');
+    Route::resource('/user', UserController::class)->only(['index'])->names('user');
     Route::get('/index', [IndexController::class, 'index'])->name('index');
     Route::get('/dashboard', [DashController::class, 'dash'])->name('dashboard');
 
